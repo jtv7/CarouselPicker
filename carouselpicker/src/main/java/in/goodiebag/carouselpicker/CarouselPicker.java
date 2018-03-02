@@ -2,7 +2,7 @@ package in.goodiebag.carouselpicker;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.DrawableRes;
+import android.graphics.drawable.Drawable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -126,7 +126,7 @@ public class CarouselPicker extends ViewPager {
             if (pickerItem.hasDrawable()) {
                 iv.setVisibility(VISIBLE);
                 tv.setVisibility(GONE);
-                iv.setImageResource(pickerItem.getDrawable());
+                iv.setImageDrawable(iv.getDrawable());
             } else {
                 if (pickerItem.getText() != null) {
                     iv.setVisibility(GONE);
@@ -166,8 +166,7 @@ public class CarouselPicker extends ViewPager {
     public interface PickerItem {
         String getText();
 
-        @DrawableRes
-        int getDrawable();
+        Drawable getDrawable();
 
         boolean hasDrawable();
     }
@@ -189,8 +188,8 @@ public class CarouselPicker extends ViewPager {
         }
 
         @Override
-        public int getDrawable() {
-            return 0;
+        public Drawable getDrawable() {
+            return null;
         }
 
         @Override
@@ -211,10 +210,10 @@ public class CarouselPicker extends ViewPager {
      * A PickerItem which supports drawables.
      */
     public static class DrawableItem implements PickerItem {
-        @DrawableRes
-        private int drawable;
 
-        public DrawableItem(@DrawableRes int drawable) {
+        Drawable drawable;
+
+        public DrawableItem(Drawable drawable) {
             this.drawable = drawable;
         }
 
@@ -223,8 +222,8 @@ public class CarouselPicker extends ViewPager {
             return null;
         }
 
-        @DrawableRes
-        public int getDrawable() {
+
+        public Drawable getDrawable() {
             return drawable;
         }
 

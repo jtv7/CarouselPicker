@@ -1,15 +1,14 @@
 package in.goodiebag.example;
 
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import in.goodiebag.carouselpicker.CarouselPicker;
-import in.goodiebag.example.R;
 
 public class MainActivity extends AppCompatActivity {
     CarouselPicker imageCarousel, textCarousel, mixCarousel;
@@ -25,10 +24,10 @@ public class MainActivity extends AppCompatActivity {
         tvSelected = (TextView) findViewById(R.id.tvSelectedItem);
 
         List<CarouselPicker.PickerItem> imageItems = new ArrayList<>();
-        imageItems.add(new CarouselPicker.DrawableItem(R.drawable.i1));
-        imageItems.add(new CarouselPicker.DrawableItem(R.drawable.i2));
-        imageItems.add(new CarouselPicker.DrawableItem(R.drawable.i3));
-        imageItems.add(new CarouselPicker.DrawableItem(R.drawable.i4));
+        imageItems.add(new CarouselPicker.DrawableItem(getResources().getDrawable(R.drawable.i1)));
+        imageItems.add(new CarouselPicker.DrawableItem(getResources().getDrawable(R.drawable.i2)));
+        imageItems.add(new CarouselPicker.DrawableItem(getResources().getDrawable(R.drawable.i3)));
+        imageItems.add(new CarouselPicker.DrawableItem(getResources().getDrawable(R.drawable.i4)));
         CarouselPicker.CarouselViewAdapter imageAdapter = new CarouselPicker.CarouselViewAdapter(this, imageItems, 0);
         imageCarousel.setAdapter(imageAdapter);
 
@@ -41,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
         textCarousel.setAdapter(textAdapter);
 
         List<CarouselPicker.PickerItem> mixItems = new ArrayList<>();
-        mixItems.add(new CarouselPicker.DrawableItem(R.drawable.i1));
+        mixItems.add(new CarouselPicker.DrawableItem(getResources().getDrawable(R.drawable.i1)));
         mixItems.add(new CarouselPicker.TextItem("hi", 20));
-        mixItems.add(new CarouselPicker.DrawableItem(R.drawable.i2));
+        mixItems.add(new CarouselPicker.DrawableItem(getResources().getDrawable(R.drawable.i2)));
         mixItems.add(new CarouselPicker.TextItem("hi", 20));
 
         CarouselPicker.CarouselViewAdapter mixAdapter = new CarouselPicker.CarouselViewAdapter(this, mixItems, 0);
